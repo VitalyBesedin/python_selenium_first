@@ -1,8 +1,5 @@
-# from selenium import webdriver
-#
-#
-# driver = webdriver.Chrome()
-# driver.get('https://www.saucedemo.com/')
+import time
+
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 
@@ -10,6 +7,11 @@ options = webdriver.ChromeOptions()
 options.add_experimental_option("detach", True)
 g = Service()
 driver = webdriver.Chrome(options=options, service=g)
+#driver = webdriver.Firefox()
+#driver = webdriver.Safari()
+#driver = webdriver.Edge()
 base_url = 'https://www.saucedemo.com/'
 driver.get(base_url)
 driver.maximize_window()
+time.sleep(5)
+driver.close()
