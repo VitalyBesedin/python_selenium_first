@@ -26,9 +26,17 @@ print("Input password")
 button_login = driver.find_element(By.XPATH, "//input[@value='Login']")
 button_login.click()
 print("Click login button")
-text_products = driver.find_element(By.XPATH, "//span[@class='title']")
-value_text_products = text_products.text
-print(value_text_products)
+# text_products = driver.find_element(By.XPATH, "//span[@class='title']")
+# value_text_products = text_products.text
+# print(value_text_products)
+# assert value_text_products == "Products"
+# print("GOOD")
+
+url = "https://www.saucedemo.com/inventory.html"
+get_url = driver.current_url
+print(get_url)
+assert get_url == url
+print("Good URL")
 
 
 time.sleep(5)
