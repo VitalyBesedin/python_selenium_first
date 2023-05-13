@@ -15,7 +15,7 @@ driver.get(base_url)
 driver.maximize_window()
 
 login_standard_user = "standard_user"
-password_all = "secret_sauc"
+password_all = "secret_sauc" # negative test
 
 username = driver.find_element(By.XPATH, "//input[@data-test='username']")
 username.send_keys(login_standard_user)
