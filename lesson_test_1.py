@@ -35,7 +35,7 @@ print("Click login button")
 time.sleep(3)
 now_date = datetime.datetime.utcnow().strftime("%Y.%m.%d.%H.%M.%S")
 name_screenshot = 'screenshot' + now_date + '.png'
-driver.save_screenshot(name_screenshot)
+driver.save_screenshot('/Users/vitalybesedin/PycharmProjects/python_selenium_first/screen/' + name_screenshot)
 
 url = "https://www.saucedemo.com/inventory.html"
 get_url = driver.current_url
