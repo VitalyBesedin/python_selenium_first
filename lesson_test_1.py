@@ -31,6 +31,7 @@ print("Click login button")
 # print(value_text_products)
 # assert value_text_products == "Products"
 # print("GOOD")
+driver.save_screenshot('screenshot.png')
 
 url = "https://www.saucedemo.com/inventory.html"
 get_url = driver.current_url
