@@ -8,8 +8,9 @@ from selenium.webdriver.common.by import By
 # options.add_experimental_option("detach", True)
 # g = Service()
 # driver = webdriver.Chrome(options=options, service=g)
+driver = webdriver.Chrome()
 # driver = webdriver.Firefox()
-driver = webdriver.Safari()
+# driver = webdriver.Safari()
 # driver = webdriver.Edge()
 base_url = 'https://www.saucedemo.com/'
 driver.get(base_url)
@@ -35,7 +36,8 @@ print("Click login button")
 time.sleep(3)
 now_date = datetime.datetime.utcnow().strftime("%Y.%m.%d.%H.%M.%S")
 name_screenshot = 'screenshot' + now_date + '.png'
-driver.save_screenshot('/Users/vitalybesedin/PycharmProjects/python_selenium_first/screen/' + name_screenshot)
+# driver.save_screenshot('/Users/vitalybesedin/PycharmProjects/python_selenium_first/screen/' + name_screenshot) # MacOS
+driver.save_screenshot('C:\\Users\\vit\\PycharmProjects\\python_selenium_first\\screen\\' + name_screenshot) # Windows
 
 url = "https://www.saucedemo.com/inventory.html"
 get_url = driver.current_url
