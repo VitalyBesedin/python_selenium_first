@@ -7,7 +7,7 @@ from selenium.webdriver.common.by import By
 # options = webdriver.ChromeOptions()
 # options.add_experimental_option("detach", True)
 # g = Service()
-# driver = webdriver.Chrome(options=options, service=g)  # this is and above MacOS
+# driver = webdriver.Chrome(options=options, service=g)  # this is and above macOS
 # driver = webdriver.Chrome()  # Windows
 # driver = webdriver.Firefox()
 driver = webdriver.Safari()
