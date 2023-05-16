@@ -47,6 +47,23 @@ print("Select Product 1")
 time.sleep(1)
 cart = driver.find_element(By.XPATH, "//span[@class='shopping_cart_badge']")
 cart.click()
-print("Cart")
+print("Enter Cart")
+time.sleep(1)
+
+""" Info Cart Product 1"""
+cart_product_1 = driver.find_element(By.XPATH, "//a[@id='item_4_title_link']")
+value_cart_product_1 = cart_product_1.text
+print(value_cart_product_1)
+assert value_product_1 == value_cart_product_1
+print("Info Cart Product 1 GOOD")
+time.sleep(1)
+price_cart_product_1 = driver.find_element(By.XPATH, "//*[@id='cart_contents_container']/div/div[1]/div[3]/div[2]/div[2]/div")
+value_cart_price_product_1 = price_cart_product_1.text
+print(value_cart_price_product_1)
+assert value_price_product_1 == value_cart_price_product_1
+print("Info Cart Price Product 1 GOOD")
+time.sleep(1)
+
+
 
 time.sleep(5)
