@@ -70,6 +70,7 @@ def check_product_in_cart(check_product_xpath, check_price_product_xpath, value_
 
 # value_cart_product_1, value_cart_price_product_1 = \
 check_product_in_cart("//a[@id='item_4_title_link']", "//*[@id='cart_contents_container']/div/div[1]/div[3]/div[2]/div[2]/div", value_product_1, value_price_product_1)
+check_product_in_cart("//a[@id='item_5_title_link']", "//*[@id='cart_contents_container']/div/div[1]/div[4]/div[2]/div[2]/div", value_product_2, value_price_product_2)
 # print(value_cart_product_1)
 # print(value_cart_price_product_1)
 
@@ -77,19 +78,19 @@ checkout = driver.find_element(By.XPATH, "//button[@id='checkout']")
 checkout.click()
 print("Click Checkout")
 
-# """Select User Info"""
-# first_name = driver.find_element(By.XPATH, "//input[@id='first-name']")
-# first_name.send_keys('Ivan')
-# print("Input First Name")
-# last_name = driver.find_element(By.XPATH, "//input[@id='last-name']")
-# last_name.send_keys('Ivanov')
-# print("Input Last Name")
-# zip_code = driver.find_element(By.XPATH, "//input[@id='postal-code']")
-# zip_code.send_keys('111111')
-# print("Input ZIP Code")
-# continue_button = driver.find_element(By.XPATH, "//input[@id='continue']")
-# continue_button.click()
-# print("Click Continue")
+"""Select User Info"""
+first_name = driver.find_element(By.XPATH, "//input[@id='first-name']")
+first_name.send_keys('Ivan')
+print("Input First Name")
+last_name = driver.find_element(By.XPATH, "//input[@id='last-name']")
+last_name.send_keys('Ivanov')
+print("Input Last Name")
+zip_code = driver.find_element(By.XPATH, "//input[@id='postal-code']")
+zip_code.send_keys('111111')
+print("Input ZIP Code")
+continue_button = driver.find_element(By.XPATH, "//input[@id='continue']")
+continue_button.click()
+print("Click Continue")
 #
 # """ Info Order Product 1"""
 # order_product_1 = driver.find_element(By.XPATH, "//a[@id='item_4_title_link']")
