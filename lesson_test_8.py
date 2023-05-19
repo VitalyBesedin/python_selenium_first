@@ -8,9 +8,9 @@ from selenium.webdriver.common.by import By
 # options.add_experimental_option("detach", True)
 # g = Service()
 # driver = webdriver.Chrome(options=options, service=g)  # this is and above macOS
-driver = webdriver.Chrome()  # Windows
+# driver = webdriver.Chrome()  # Windows
 # driver = webdriver.Firefox()
-# driver = webdriver.Safari()
+driver = webdriver.Safari()
 # driver = webdriver.Edge()
 base_url = 'https://demoqa.com/checkbox'
 driver.get(base_url)
