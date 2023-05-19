@@ -16,12 +16,12 @@ base_url = 'https://testpages.herokuapp.com/styled/basic-html-form-test.html'
 driver.get(base_url)
 driver.maximize_window()
 
-
-# check_box = driver.find_element(By.XPATH, "//span[@class='rct-checkbox']")
-# check_box.click()
-# time.sleep(5)
-# check_box_1 = driver.find_element(By.XPATH, "//button[@aria-label='Toggle']")
-# check_box_1.click()
+time.sleep(2)
+check_box = driver.find_element(By.XPATH, "//input[@value='cb1']")
+check_box.click()
+time.sleep(2)
+check_box_1 = driver.find_element(By.XPATH, "//input[@value='cb3']")
+check_box_1.click()
 
 
 time.sleep(5)
