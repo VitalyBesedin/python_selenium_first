@@ -22,6 +22,8 @@ check_box.click()
 time.sleep(2)
 check_box_1 = driver.find_element(By.XPATH, "//input[@value='cb3']")
 check_box_1.click()
-
+time.sleep(2)
+radio_button = driver.find_element(By.XPATH, "//input[@value='rd1']")
+radio_button.click()
 
 time.sleep(5)
