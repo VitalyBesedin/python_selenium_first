@@ -5,12 +5,12 @@ from selenium.webdriver import Keys
 from selenium.webdriver.common.by import By
 
 def days_in_a_month(month): # calculate days in a month
-    if month == 2:
-        return 28
-    elif month in [4,6,9,11]:
-        return 30
-    else:
-        return 31
+if month == 2:
+return 28
+elif month in [4,6,9,11]:
+return 30
+else:
+return 31
 
 driver = webdriver.Chrome()
 base_url = 'https://demoqa.com/date-picker'
@@ -31,23 +31,23 @@ print(now_date_year)
 
 """creating the date + 10"""
 if int(now_date_day) + 10 > days_in_a_month(int(now_date_month)):
-    day_plus_10 = int(now_date_day) + 10 - days_in_a_month(int(now_date_month))
-    actual_month = int(now_date_month) + 1
+day_plus_10 = int(now_date_day) + 10 - days_in_a_month(int(now_date_month))
+actual_month = int(now_date_month) + 1
 else:
-    day_plus_10 = int(now_date_day) + 10
-    actual_month = int(now_date_month)
+day_plus_10 = int(now_date_day) + 10
+actual_month = int(now_date_month)
 
 if day_plus_10 < 10:
-    day = "0" + str(day_plus_10)
+day = "0" + str(day_plus_10)
 else:
-    day = str(day_plus_10)
+day = str(day_plus_10)
 if actual_month < 10:
-    month = "0" + str(actual_month)
+month = "0" + str(actual_month)
 else:
-    month = str(actual_month)
+month = str(actual_month)
 
 for _ in range(10): # clearing date fild
-    new_date.send_keys(Keys.BACKSPACE)
+new_date.send_keys(Keys.BACKSPACE)
 
 date_plus_10 = month+"/"+day+"/"+now_date_year # insert date + 10
 print(date_plus_10)
