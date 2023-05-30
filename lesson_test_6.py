@@ -4,13 +4,13 @@ from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 
-options = webdriver.ChromeOptions()
-options.add_experimental_option("detach", True)
-g = Service()
-driver = webdriver.Chrome(options=options, service=g)  # this is and above macOS
+# options = webdriver.ChromeOptions()
+# options.add_experimental_option("detach", True)
+# g = Service()
+# driver = webdriver.Chrome(options=options, service=g)  # this is and above macOS
 # driver = webdriver.Chrome()  # Windows
 # driver = webdriver.Firefox()
-# driver = webdriver.Safari()
+driver = webdriver.Safari()
 # driver = webdriver.Edge()
 base_url = 'https://www.saucedemo.com/'
 driver.get(base_url)
@@ -90,7 +90,7 @@ print(item_total)
 assert value_summery_price == item_total
 print("Total Summery Price GOOD")
 
-finish = driver.find_element(By.XPATH, "//button[@id='finish']")
-finish.click()
-print("Click Finish")
-time.sleep(5)
+# finish = driver.find_element(By.XPATH, "//button[@id='finish']")
+# finish.click()
+# print("Click Finish")
+time.sleep(10)
