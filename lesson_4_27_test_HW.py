@@ -2,13 +2,16 @@ import time
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 
-products = ["//a[@id='item_4_title_link']","//a[@id='item_5_title_link']"]
-product_prices = ["//*[@id='inventory_container']/div/div[1]/div[2]/div[2]/div", "//*[@id='inventory_container']/div/div[4]/div[2]/div[2]/div"]
-select_products = ["//button[@id='add-to-cart-sauce-labs-backpack']", "//button[@id='add-to-cart-sauce-labs-fleece-jacket']"]
-cart_products = ["//a[@id='item_4_title_link']", "//a[@id='item_5_title_link']"]
-price_cart_products = ["//*[@id='cart_contents_container']/div/div[1]/div[3]/div[2]/div[2]/div", "//*[@id='cart_contents_container']/div/div[1]/div[3]/div[2]/div[2]/div"]
-order_products =["//a[@id='item_4_title_link']", "//a[@id='item_5_title_link']"]
-price_order_products = ["//*[@id='checkout_summary_container']/div/div[1]/div[3]/div[2]/div[2]/div", "//*[@id='checkout_summary_container']/div/div[1]/div[3]/div[2]/div[2]/div"]
+products = ["#item_4_title_link", "#item_0_title_link", "#item_1_title_link", "#item_5_title_link", "#item_2_title_link", "#item_3_title_link"]
+product_prices = ["//*[@id='inventory_container']/div/div[1]/div[2]/div[2]/div", "//*[@id='inventory_container']/div/div[2]/div[2]/div[2]/div", "//*[@id='inventory_container']/div/div[3]/div[2]/div[2]/div", "//*[@id='inventory_container']/div/div[4]/div[2]/div[2]/div", "//*[@id='inventory_container']/div/div[5]/div[2]/div[2]/div", "//*[@id='inventory_container']/div/div[6]/div[2]/div[2]/div"]
+# select_products = ["#add-to-cart-sauce-labs-backpack", "#add-to-cart-sauce-labs-bike-light", "#add-to-cart-sauce-labs-bolt-t-shirt", "#add-to-cart-sauce-labs-fleece-jacket", "#add-to-cart-sauce-labs-onesie", "add-to-cart-test.allthethings()-t-shirt-(red)"]
+select_products = ["//button[@id='add-to-cart-sauce-labs-backpack']", "//button[@id='add-to-cart-sauce-labs-bike-light']", "//button[@id='add-to-cart-sauce-labs-bolt-t-shirt']", "//button[@id='add-to-cart-sauce-labs-fleece-jacket']", "//button[@id='add-to-cart-sauce-labs-onesie']", "//button[@id='add-to-cart-test.allthethings()-t-shirt-(red)']"]
+
+#
+price_cart_products = "//*[@id='cart_contents_container']/div/div[1]/div[3]/div[2]/div[2]/div"
+price_order_products = "//*[@id='checkout_summary_container']/div/div[1]/div[3]/div[2]/div[2]/div"
+
+
 
 print("Приветствую тебя в нашем интернет магазине")
 print("Выбери один из следующих товаров и укажи его номер: 1 - Sauce Labs Backpack, 2 - Sauce Labs Bike Light, "
@@ -34,7 +37,7 @@ password_all = "secret_sauce"
 """Functions"""
 
 def add_products_to_cart(number):
-    product = driver.find_element(By.XPATH, products[number - 1])
+    product = driver.find_element(By.CSS_SELECTOR, products[number - 1])
     value_product = product.text
     price_product = driver.find_element(By.XPATH, product_prices[number - 1])
     value_price_product = price_product.text
@@ -44,24 +47,24 @@ def add_products_to_cart(number):
     return value_product, value_price_product
 
 def check_product_in_cart(number, value_product, value_price_product):
-    cart_product = driver.find_element(By.XPATH, cart_products[number - 1])
+    cart_product = driver.find_element(By.CSS_SELECTOR, products[number - 1])
     value_cart_product = cart_product.text
     print(value_cart_product)
     assert value_product == value_cart_product
     print("Info Cart Product GOOD")
-    price_cart_product = driver.find_element(By.XPATH, price_cart_products[number - 1])
+    price_cart_product = driver.find_element(By.XPATH, price_cart_products)
     value_cart_price_product = price_cart_product.text
     print(value_cart_price_product)
     assert value_price_product == value_cart_price_product
     print("Info Cart Price Product GOOD")
 
 def check_products_in_order(number, value_product, value_price_product):
-    order_product = driver.find_element(By.XPATH, order_products[number - 1])
+    order_product = driver.find_element(By.CSS_SELECTOR, products[number - 1])
     value_order_product = order_product.text
     print(value_order_product)
     assert value_product == value_order_product
     print("Info Order Product GOOD")
-    price_order_product = driver.find_element(By.XPATH, price_order_products[number - 1])
+    price_order_product = driver.find_element(By.XPATH, price_order_products)
     value_order_price_product = price_order_product.text
     print(value_order_price_product)
     assert value_price_product == value_order_price_product
