@@ -1,31 +1,27 @@
 import time
 from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 
 products = ["#item_4_title_link", "#item_0_title_link", "#item_1_title_link", "#item_5_title_link", "#item_2_title_link", "#item_3_title_link"]
 product_prices = ["//*[@id='inventory_container']/div/div[1]/div[2]/div[2]/div", "//*[@id='inventory_container']/div/div[2]/div[2]/div[2]/div", "//*[@id='inventory_container']/div/div[3]/div[2]/div[2]/div", "//*[@id='inventory_container']/div/div[4]/div[2]/div[2]/div", "//*[@id='inventory_container']/div/div[5]/div[2]/div[2]/div", "//*[@id='inventory_container']/div/div[6]/div[2]/div[2]/div"]
-# select_products = ["#add-to-cart-sauce-labs-backpack", "#add-to-cart-sauce-labs-bike-light", "#add-to-cart-sauce-labs-bolt-t-shirt", "#add-to-cart-sauce-labs-fleece-jacket", "#add-to-cart-sauce-labs-onesie", "add-to-cart-test.allthethings()-t-shirt-(red)"]
 select_products = ["//button[@id='add-to-cart-sauce-labs-backpack']", "//button[@id='add-to-cart-sauce-labs-bike-light']", "//button[@id='add-to-cart-sauce-labs-bolt-t-shirt']", "//button[@id='add-to-cart-sauce-labs-fleece-jacket']", "//button[@id='add-to-cart-sauce-labs-onesie']", "//button[@id='add-to-cart-test.allthethings()-t-shirt-(red)']"]
-
-#
 price_cart_products = "//*[@id='cart_contents_container']/div/div[1]/div[3]/div[2]/div[2]/div"
 price_order_products = "//*[@id='checkout_summary_container']/div/div[1]/div[3]/div[2]/div[2]/div"
 
 
-
 print("Приветствую тебя в нашем интернет магазине")
-print("Выбери один из следующих товаров и укажи его номер: 1 - Sauce Labs Backpack, 2 - Sauce Labs Bike Light, "
-      "3 - Sauce Labs Bolt T-Shirt, 4 - Sauce Labs Fleece Jacket, 5 - Sauce Labs Onesie, "
-      "6 - Test.allTheThings() T-Shirt (Red)")
+print("Выбери один из следующих товаров и укажи его номер: 1 - Sauce Labs Backpack, 2 - Sauce Labs Bike Light,")
+print("3 - Sauce Labs Bolt T-Shirt, 4 - Sauce Labs Fleece Jacket, 5 - Sauce Labs Onesie, 6 - Test.allTheThings() T-Shirt (Red)")
 product = int(input())
 print(product)
-# options = webdriver.ChromeOptions()
-# options.add_experimental_option("detach", True)
-# g = Service()
-# driver = webdriver.Chrome(options=options, service=g)  # this is and above macOS
+options = webdriver.ChromeOptions()
+options.add_experimental_option("detach", True)
+g = Service()
+driver = webdriver.Chrome(options=options, service=g)  # this is and above macOS
 # driver = webdriver.Chrome()  # Windows
 # driver = webdriver.Firefox()
-driver = webdriver.Safari()
+# driver = webdriver.Safari()
 # driver = webdriver.Edge()
 base_url = 'https://www.saucedemo.com/'
 driver.get(base_url)
@@ -71,11 +67,8 @@ def check_products_in_order(number, value_product, value_price_product):
     print("Info Order Price Product GOOD")
     return value_order_price_product
 
-def parsing_sum(s): # parsing resistance with sum by $ sign
-    i = s.rfind('$')
-    return float(s[i+1:])
-
 """Start Test"""
+print("Start Test")
 username = driver.find_element(By.XPATH, "//input[@data-test='username']")
 username.send_keys(login_standard_user)
 print("Input login")
@@ -117,17 +110,11 @@ print("Click Continue")
 
 """ Info Order Products"""
 order_price_product = check_products_in_order(product, value_product, value_price_product)
-# summery_price = driver.find_element(By.XPATH, "//div[@class='summary_subtotal_label']")
-# value_summery_price = summery_price.text
-# print(value_summery_price)
+summery_price = driver.find_element(By.XPATH, "//div[@class='summary_subtotal_label']")
+value_summery_price = summery_price.text
+print(value_summery_price)
 
-"""Getting numeric values of fields with amounts"""
-# summery_float = parsing_sum(value_summery_price)
-# price_product_1_float = parsing_sum(order_price_product_1)
-# price_product_2_float = parsing_sum(order_price_product_2)
-# assert price_product_1_float + price_product_2_float == summery_float
-# print("Total Summery Price GOOD", price_product_1_float + price_product_2_float, '=', summery_float)
-
+print("End Test")
 # """Finishing order"""
 # finish = driver.find_element(By.XPATH, "//button[@id='finish']")
 # finish.click()
