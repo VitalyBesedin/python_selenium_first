@@ -3,33 +3,6 @@ from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 
-products = ["#item_4_title_link", "#item_0_title_link", "#item_1_title_link", "#item_5_title_link", "#item_2_title_link", "#item_3_title_link"]
-product_prices = ["//*[@id='inventory_container']/div/div[1]/div[2]/div[2]/div", "//*[@id='inventory_container']/div/div[2]/div[2]/div[2]/div", "//*[@id='inventory_container']/div/div[3]/div[2]/div[2]/div", "//*[@id='inventory_container']/div/div[4]/div[2]/div[2]/div", "//*[@id='inventory_container']/div/div[5]/div[2]/div[2]/div", "//*[@id='inventory_container']/div/div[6]/div[2]/div[2]/div"]
-select_products = ["//button[@id='add-to-cart-sauce-labs-backpack']", "//button[@id='add-to-cart-sauce-labs-bike-light']", "//button[@id='add-to-cart-sauce-labs-bolt-t-shirt']", "//button[@id='add-to-cart-sauce-labs-fleece-jacket']", "//button[@id='add-to-cart-sauce-labs-onesie']", "//button[@id='add-to-cart-test.allthethings()-t-shirt-(red)']"]
-price_cart_products = "//*[@id='cart_contents_container']/div/div[1]/div[3]/div[2]/div[2]/div"
-price_order_products = "//*[@id='checkout_summary_container']/div/div[1]/div[3]/div[2]/div[2]/div"
-
-
-print("Приветствую тебя в нашем интернет магазине")
-print("Выбери один из следующих товаров и укажи его номер: 1 - Sauce Labs Backpack, 2 - Sauce Labs Bike Light,")
-print("3 - Sauce Labs Bolt T-Shirt, 4 - Sauce Labs Fleece Jacket, 5 - Sauce Labs Onesie, 6 - Test.allTheThings() T-Shirt (Red)")
-product = int(input())
-print(product)
-options = webdriver.ChromeOptions()
-options.add_experimental_option("detach", True)
-g = Service()
-driver = webdriver.Chrome(options=options, service=g)  # this is and above macOS
-# driver = webdriver.Chrome()  # Windows
-# driver = webdriver.Firefox()
-# driver = webdriver.Safari()
-# driver = webdriver.Edge()
-base_url = 'https://www.saucedemo.com/'
-driver.get(base_url)
-driver.maximize_window()
-login_standard_user = "standard_user"
-password_all = "secret_sauce"
-
-
 """Functions"""
 
 def add_products_to_cart(number):
@@ -66,6 +39,49 @@ def check_products_in_order(number, value_product, value_price_product):
     assert value_price_product == value_order_price_product
     print("Info Order Price Product GOOD")
     return value_order_price_product
+
+def is_valid(s):
+    if not s.isdigit():
+        return s.isdigit()
+    elif float(s) % 1 > 0:
+        return False
+    else:
+        return 1 <= int(s) <= 6
+
+
+products = ["#item_4_title_link", "#item_0_title_link", "#item_1_title_link", "#item_5_title_link", "#item_2_title_link", "#item_3_title_link"]
+product_prices = ["//*[@id='inventory_container']/div/div[1]/div[2]/div[2]/div", "//*[@id='inventory_container']/div/div[2]/div[2]/div[2]/div", "//*[@id='inventory_container']/div/div[3]/div[2]/div[2]/div", "//*[@id='inventory_container']/div/div[4]/div[2]/div[2]/div", "//*[@id='inventory_container']/div/div[5]/div[2]/div[2]/div", "//*[@id='inventory_container']/div/div[6]/div[2]/div[2]/div"]
+select_products = ["//button[@id='add-to-cart-sauce-labs-backpack']", "//button[@id='add-to-cart-sauce-labs-bike-light']", "//button[@id='add-to-cart-sauce-labs-bolt-t-shirt']", "//button[@id='add-to-cart-sauce-labs-fleece-jacket']", "//button[@id='add-to-cart-sauce-labs-onesie']", "//button[@id='add-to-cart-test.allthethings()-t-shirt-(red)']"]
+price_cart_products = "//*[@id='cart_contents_container']/div/div[1]/div[3]/div[2]/div[2]/div"
+price_order_products = "//*[@id='checkout_summary_container']/div/div[1]/div[3]/div[2]/div[2]/div"
+
+
+print("Приветствую тебя в нашем интернет магазине")
+print("Выбери один из следующих товаров и укажи его номер: 1 - Sauce Labs Backpack, 2 - Sauce Labs Bike Light,")
+print("3 - Sauce Labs Bolt T-Shirt, 4 - Sauce Labs Fleece Jacket, 5 - Sauce Labs Onesie, 6 - Test.allTheThings() T-Shirt (Red)")
+product_number = input()
+print(product_number)
+while not is_valid(product_number):
+    product_number = input("Введите пожалуйста только целое число от 1-го до 6-ти:")
+    print(product_number)
+
+product = int(product_number)
+print(product)
+# options = webdriver.ChromeOptions()
+# options.add_experimental_option("detach", True)
+# g = Service()
+# driver = webdriver.Chrome(options=options, service=g)  # this is and above macOS
+driver = webdriver.Chrome()  # Windows
+# driver = webdriver.Firefox()
+# driver = webdriver.Safari()
+# driver = webdriver.Edge()
+base_url = 'https://www.saucedemo.com/'
+driver.get(base_url)
+driver.maximize_window()
+login_standard_user = "standard_user"
+password_all = "secret_sauce"
+
+
 
 """Start Test"""
 print("Start Test")
