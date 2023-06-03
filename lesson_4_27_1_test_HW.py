@@ -64,11 +64,6 @@ try:
 except ValueError as exception:
     product = int(input("Введите пожалуйста только целое число от 1-го до 6-ти:"))
 
-try:
-    product = int(input())
-    test = products[product - 1]
-except IndexError as exception:
-    product = int(input("Введите пожалуйста только целое число от 1-го до 6-ти:"))
 # IndexError
 # product_number = input()
 # print(product_number)
