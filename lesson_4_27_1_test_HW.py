@@ -40,13 +40,13 @@ def check_products_in_order(number, value_product, value_price_product):
     print("Info Order Price Product GOOD")
     return value_order_price_product
 
-# def is_valid(s):
-#     if not s.isdigit():
-#         return s.isdigit()
-#     elif float(s) % 1 > 0:
-#         return False
-#     else:
-#         return 1 <= int(s) <= 6
+def is_valid(s):
+    if not s.isdigit():
+        return s.isdigit()
+    elif float(s) % 1 > 0:
+        return False
+    else:
+        return 1 <= int(s) <= 6
 
 
 products = ["#item_4_title_link", "#item_0_title_link", "#item_1_title_link", "#item_5_title_link", "#item_2_title_link", "#item_3_title_link"]
@@ -59,19 +59,19 @@ price_order_products = "//*[@id='checkout_summary_container']/div/div[1]/div[3]/
 print("Приветствую тебя в нашем интернет магазине")
 print("Выбери один из следующих товаров и укажи его номер: 1 - Sauce Labs Backpack, 2 - Sauce Labs Bike Light,")
 print("3 - Sauce Labs Bolt T-Shirt, 4 - Sauce Labs Fleece Jacket, 5 - Sauce Labs Onesie, 6 - Test.allTheThings() T-Shirt (Red)")
-try:
-    product = int(input())
-except ValueError as exception:
-    product = int(input("Введите пожалуйста только целое число от 1-го до 6-ти:"))
-
-# IndexError
-# product_number = input()
-# print(product_number)
-# while not is_valid(product_number):
-#     product_number = input("Введите пожалуйста только целое число от 1-го до 6-ти:")
-#     print(product_number)
+# try:
+#     product = int(input())
+# except ValueError as exception:
+#     product = int(input("Введите пожалуйста только целое число от 1-го до 6-ти:"))
 #
-# product = int(product_number)
+
+product_number = input()
+print(product_number)
+while not is_valid(product_number):
+    product_number = input("Введите пожалуйста только целое число от 1-го до 6-ти:")
+    print(product_number)
+
+product = int(product_number)
 print(product)
 # options = webdriver.ChromeOptions()
 # options.add_experimental_option("detach", True)
